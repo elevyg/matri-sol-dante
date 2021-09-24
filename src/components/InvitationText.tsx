@@ -1,11 +1,13 @@
+import { Theme } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React from "react";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles<Theme>((theme) => ({
   paragraph: {
     lineHeight: 1.5,
   },
-});
+  pd: { fontWeight: "bold", color: theme.palette.grey[500] },
+}));
 
 const InvitationText = () => {
   const classes = useStyles();
@@ -40,6 +42,9 @@ const InvitationText = () => {
         esta celebración. Los queremos queremos.
       </p>
       <p>Cami y Eyal.</p>
+      <p className={classes.pd}>
+        PD: Pronto les daremos más información en esta misma página.
+      </p>
     </div>
   );
 };

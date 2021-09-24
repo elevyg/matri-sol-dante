@@ -8,15 +8,17 @@ import image from "./assets/images/save-the-date.jpeg";
 function App() {
   const classes = useStyles();
   return (
-    <Container maxWidth="lg" className={classes.container}>
-      <Grid
-        container
-        spacing={2}
-        justifyContent="space-evenly"
-        alignItems="center"
-      >
-        <Grid item md={5} xs={12}>
-          <Paper elevation={12}>
+    <Container maxWidth="lg" className={classes.container} disableGutters>
+      <Grid container justifyContent="space-evenly" alignItems="center">
+        <Grid
+          item
+          md={5}
+          xs={12}
+          justifyContent="center"
+          display="flex"
+          alignItems="center"
+        >
+          <Paper elevation={12} className={classes.imageContainer}>
             <img src={image} alt="save the date" className={classes.image} />
           </Paper>
         </Grid>
@@ -41,5 +43,12 @@ const useStyles = makeStyles<Theme>((theme) => ({
       height: "100vh",
     },
   },
-  image: { maxHeight: "80vh", width: "100%", objectFit: "contain" },
+  imageContainer: { width: "fit-content", height: "fit-content" },
+  image: {
+    width: "100%",
+    objectFit: "contain",
+    [theme.breakpoints.up("md")]: {
+      maxHeight: "100vh",
+    },
+  },
 }));
