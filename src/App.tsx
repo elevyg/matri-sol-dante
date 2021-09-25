@@ -10,7 +10,13 @@ function App() {
   return (
     <div className={classes.background}>
       <Container maxWidth="lg" className={classes.container} disableGutters>
-        <Grid container justifyContent="space-evenly" alignItems="center">
+        <Grid
+          container
+          justifyContent="space-evenly"
+          alignItems="center"
+          alignContent="center"
+          height="100%"
+        >
           <Grid
             item
             md={5}
