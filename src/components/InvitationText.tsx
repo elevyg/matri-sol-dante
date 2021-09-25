@@ -3,8 +3,10 @@ import { makeStyles } from "@mui/styles";
 import React from "react";
 
 const useStyles = makeStyles<Theme>((theme) => ({
+  title: { color: "#243140" },
   paragraph: {
     lineHeight: 1.5,
+    color: "#243140",
   },
   pd: { fontWeight: "bold", color: theme.palette.grey[500] },
 }));
@@ -13,7 +15,7 @@ const InvitationText = () => {
   const classes = useStyles();
   return (
     <div>
-      <h1>Queridos queridos,</h1>
+      <h1 className={classes.title}>Queridos queridos,</h1>
       <p className={classes.paragraph}>
         Les escribimos porque nos casamos el 8 de enero en Chile Chico, y
         patudamente se nos ocurrió la genial idea de invitarlos al sur del sur.
