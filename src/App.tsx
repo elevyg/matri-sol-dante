@@ -1,39 +1,40 @@
 import React from "react";
-import { Container, Grid, Paper, Theme } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import InvitationText from "./components/InvitationText";
+import { Theme } from "@mui/material";
 
-import image from "./assets/images/save-the-date.jpeg";
+import { Invitation } from "./components/Invitation";
+import { Hero } from "./components/Hero";
+import { HowToGetThere } from "./components/HowToGetThere";
+import { WhereToStay } from "./components/WhereToStay";
+import { AboutTheWedding } from "./components/AboutTheWedding";
+import { AboutChileChico } from "./components/AboutChileChico";
+import { Footer } from "./components/Footer";
 
 function App() {
   const classes = useStyles();
   return (
-    <div className={classes.background}>
-      <Container maxWidth="lg" className={classes.container} disableGutters>
-        <Grid
-          container
-          justifyContent="space-evenly"
-          alignItems="center"
-          alignContent="center"
-          height="100%"
-        >
-          <Grid
-            item
-            md={5}
-            xs={12}
-            justifyContent="center"
-            display="flex"
-            alignItems="center"
-          >
-            <Paper elevation={12} className={classes.imageContainer}>
-              <img src={image} alt="save the date" className={classes.image} />
-            </Paper>
-          </Grid>
-          <Grid item md={5} xs={12}>
-            <InvitationText />
-          </Grid>
-        </Grid>
-      </Container>
+    <div>
+      <Hero />
+      <Invitation />
+      <HowToGetThere />
+      <div className={classes.imageContainer}>
+        <img
+          src="https://lacamiyeyalsecasan.s3.us-west-2.amazonaws.com/wedding-loops.jpeg"
+          alt="wedding-loops"
+          className={classes.image1}
+        />
+      </div>
+      <WhereToStay />
+      <div className={classes.imageContainer}>
+        <img
+          src="https://lacamiyeyalsecasan.s3.us-west-2.amazonaws.com/cami-eyal-apidame-low.jpg"
+          alt="apidame"
+          className={classes.image2}
+        />
+      </div>
+      <AboutTheWedding />
+      <AboutChileChico />
+      <Footer />
     </div>
   );
 }
@@ -41,39 +42,28 @@ function App() {
 export default App;
 
 const useStyles = makeStyles<Theme>((theme) => ({
-  background: {
+  imageContainer: {
     display: "flex",
-    flex: 1,
-    alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#fdfbe2",
-    padding: theme.spacing(3),
-    maxWidth: "100vw",
+  },
+  image1: {
+    width: "100vw",
+    marginTop: theme.spacing(3),
     [theme.breakpoints.up("md")]: {
-      maxHeight: "100vh",
-      padding: 0,
-      height: "100vh",
+      width: "50vw",
+      transform: "rotate(2.5deg)",
+      marginBottom: theme.spacing(3),
+      marginTop: theme.spacing(4),
     },
   },
-  container: {
-    display: "flex",
-    flex: 1,
-    width: "100%",
-    height: "100%",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#fdfbe2",
-  },
-  imageContainer: {
-    width: "fit-content",
-    height: "fit-content",
-    overflow: "hidden",
-  },
-  image: {
-    width: "100%",
-    objectFit: "contain",
+  image2: {
+    width: "100vw",
+    marginTop: theme.spacing(3),
     [theme.breakpoints.up("md")]: {
-      maxHeight: "90vh",
+      width: "50vw",
+      transform: "rotate(-2.5deg)",
+      marginBottom: theme.spacing(3),
+      marginTop: theme.spacing(4),
     },
   },
 }));
