@@ -1,5 +1,5 @@
 import React from "react";
-import { Theme } from "@mui/material";
+import { Link, Theme } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
 import { ReactComponent as AirplaneIcon } from "../../assets/icons/airplane.svg";
@@ -37,9 +37,11 @@ const TravelingTips = () => {
           <ShipIcon />
         </ListWithIcons.Icon>
         <ListWithIcons.Text>
-          Los boletos de barcaza se compran en www.barcazas.cl buscando las
-          barcazas del Lago General Carrera. Los cupos se abren a comienzo de
-          mes, estamos averiguando si podemos reservarles con más anticipación.
+          Los boletos de barcaza se compran en{" "}
+          <Link href="https://www.barcazas.cl">www.barcazas.cl</Link> buscando
+          las barcazas del Lago General Carrera. Los cupos se abren a comienzo
+          de mes, estamos averiguando si podemos reservarles con más
+          anticipación.
         </ListWithIcons.Text>
       </ListWithIcons.Item>
       <ListWithIcons.Item className={classes.plane}>
@@ -48,7 +50,8 @@ const TravelingTips = () => {
         </ListWithIcons.Icon>
         <ListWithIcons.Text>
           Existe una opción VIP, de avionetas Aerocord que viajan de Coyhaique a
-          Chile Chico. Revisar www.aerocord.cl
+          Chile Chico. Revisar{" "}
+          <Link href="https://www.facebook.com/aerocord.cl/">acá</Link>.
         </ListWithIcons.Text>
       </ListWithIcons.Item>
     </ListWithIcons>

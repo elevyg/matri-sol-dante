@@ -21,7 +21,7 @@ const WhereToStay = () => {
           ¡Es importante que comiencen a buscar alojamiento ya!, no hay mucho.
         </Typography>
         <Typography variant="body1" mt={2}>
-          En la hosteria de la Patagonia (donde celebraremos el matrio) hay un
+          En la hosteria de la Patagonia (donde celebraremos el matri) hay un
           camping excelente.
         </Typography>
         <Typography variant="body1" mt={2}>
@@ -48,7 +48,7 @@ const WhereToStay = () => {
           </li>
         </ul>
         <Typography variant="body1" mt={2}>
-          Muchas personas particulares arrriendan cabañas. Podemos ayudarlos a
+          Muchas personas particulares arriendan cabañas. Podemos ayudarlos a
           buscar si nos dan sus fechas y cuantos serán.
         </Typography>
         <div className={classes.taxi}>
@@ -56,8 +56,8 @@ const WhereToStay = () => {
             <TaxiIcon />
           </SvgIcon>
           <Typography variant="body1">
-            Existe una opción VIP, de avionetas Aerocord que viajan de Coyhaique
-            a Chile Chico. Revisar www.aerocord.cl
+            En Chile Chico, todo queda relativamente cerca y lo más común es
+            moverse caminando o en taxi.
           </Typography>
         </div>
       </Section.Content>
