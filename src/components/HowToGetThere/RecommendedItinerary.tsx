@@ -23,7 +23,11 @@ const RecommendedItinerary = () => {
           <DottedArrowIcon />
         </SvgIcon>
 
-        <ItineraryItem eta="16:00" duration="2 horas">
+        <ItineraryItem
+          eta="16:00"
+          duration="2 horas"
+          iconProps={{ sx: { transform: "scale(-1,1)" } }}
+        >
           <BusIcon />
         </ItineraryItem>
         <SvgIcon sx={{ fontSize: 50 }}>
