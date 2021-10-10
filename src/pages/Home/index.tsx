@@ -2,15 +2,15 @@ import React from "react";
 import { makeStyles } from "@mui/styles";
 import { Theme } from "@mui/material";
 
-import { Invitation } from "./components/Invitation";
-import { Hero } from "./components/Hero";
-import { HowToGetThere } from "./components/HowToGetThere";
-import { WhereToStay } from "./components/WhereToStay";
-import { AboutTheWedding } from "./components/AboutTheWedding";
-import { AboutChileChico } from "./components/AboutChileChico";
-import { Footer } from "./components/Footer";
+import { Invitation } from "../../components/Invitation";
+import { Hero } from "../../components/Hero";
+import { HowToGetThere } from "../../components/HowToGetThere";
+import { WhereToStay } from "../../components/WhereToStay";
+import { AboutTheWedding } from "../../components/AboutTheWedding";
+import { AboutChileChico } from "../../components/AboutChileChico";
+import { Footer } from "../../components/Footer";
 
-function App() {
+const Home = () => {
   const classes = useStyles();
   return (
     <div>
@@ -37,9 +37,9 @@ function App() {
       <Footer />
     </div>
   );
-}
+};
 
-export default App;
+export default Home;
 
 const useStyles = makeStyles<Theme>((theme) => ({
   imageContainer: {

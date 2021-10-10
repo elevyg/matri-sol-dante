@@ -8,12 +8,12 @@ import "@fontsource/roboto/700.css";
 
 import "./index.css";
 import { theme } from "./utils/theme";
-import App from "./App";
+import AppRouter from "./router/AppRouter";
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <App />
+      <AppRouter />
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
