@@ -23,7 +23,7 @@ const TravelingTips = () => {
         </ListWithIcons.Text>
       </ListWithIcons.Item>
       <ListWithIcons.Item>
-        <ListWithIcons.Icon>
+        <ListWithIcons.Icon sx={{ transform: "scale(-1,1)" }}>
           <BusIcon />
         </ListWithIcons.Icon>
 

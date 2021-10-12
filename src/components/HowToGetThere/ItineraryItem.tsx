@@ -6,13 +6,17 @@ interface Props {
   children: React.ReactNode;
   eta: string;
   duration: string;
+  // eslint-disable-next-line react/require-default-props
+  iconProps?: Partial<React.ComponentProps<typeof SvgIcon>>;
 }
 
-const ItineraryItem = ({ children, eta, duration }: Props) => {
+const ItineraryItem = ({ children, eta, duration, iconProps }: Props) => {
   const classes = useStyles();
   return (
     <div className={classes.container}>
-      <SvgIcon sx={{ fontSize: 50 }}>{children}</SvgIcon>
+      <SvgIcon {...iconProps} sx={{ fontSize: 50, ...iconProps?.sx }}>
+        {children}
+      </SvgIcon>
       <div className={classes.etaContainer}>
         <Typography fontSize="0.8rem">{eta}</Typography>
       </div>

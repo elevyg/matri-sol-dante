@@ -25,7 +25,7 @@ interface IconProps extends React.ComponentProps<typeof SvgIcon> {
 }
 
 const Icon = (props: IconProps) => (
-  <SvgIcon sx={{ fontSize: 50, marginRight: 2 }} {...props}>
+  <SvgIcon {...props} sx={{ fontSize: 50, marginRight: 2, ...props.sx }}>
     {props.children}
   </SvgIcon>
 );

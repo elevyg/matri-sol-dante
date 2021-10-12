@@ -1,23 +1,20 @@
+import React from "react";
 import { Theme, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import React from "react";
+import NavigationBar from "./NavigationBar";
 
 interface Props {}
 
 const Hero = (props: Props) => {
   const classes = useStyles();
   return (
-    <div>
-      <img
-        alt="eyal-cami-colbun"
-        src="https://lacamiyeyalsecasan.s3.us-west-2.amazonaws.com/cami-eyal-lake.jpeg"
-        className={classes.image}
-      />
+    <div className={classes.container}>
       <div className={classes.titleContainer}>
         <Typography fontWeight={700} className={classes.title} fontSize={30}>
           La Cami y Eyal se casan
         </Typography>
       </div>
+      <NavigationBar />
     </div>
   );
 };
@@ -25,14 +22,15 @@ const Hero = (props: Props) => {
 export default Hero;
 
 const useStyles = makeStyles<Theme>((theme) => ({
-  image: {
+  container: {
+    backgroundImage: `url("https://lacamiyeyalsecasan.s3.us-west-2.amazonaws.com/cami-eyal-lake.jpeg")`,
     width: "100vw",
     height: "60vh",
-    objectFit: "cover",
-    objectPosition: "35% 50%",
+    backgroundSize: "cover",
+    backgroundPosition: "35% 50%",
     [theme.breakpoints.up("md")]: {
-      height: "auto",
-      objectPosition: "50% 50%",
+      height: "80vh",
+      backgroundPosition: "50% 50%",
     },
   },
   titleContainer: {
