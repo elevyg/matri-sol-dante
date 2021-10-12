@@ -1,9 +1,12 @@
 import React from "react";
 import {
+  Alert,
   Button,
+  CircularProgress,
   Collapse,
   FormControl,
   FormControlLabel,
+  FormHelperText,
   FormLabel,
   Grid,
   InputLabel,
@@ -15,20 +18,44 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useForm, useController } from "react-hook-form";
+import { useForm, useController, useWatch } from "react-hook-form";
 import DatePicker from "@mui/lab/DatePicker";
+import { useMutation } from "react-query";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useWindowSize } from "react-use";
+import Confetti from "react-confetti";
 
 import { TitleWithIcon } from "../atoms";
 import Section from "../atoms/Section";
 import { ReactComponent as Calendar } from "../../assets/icons/calendar.svg";
+import { addRSVP } from "../../actions/rsvp";
+import { RsvpValidation } from "../../utils/rsvpValidation";
 
-interface Props {}
+const RSVP = () => {
+  const { width, height } = useWindowSize();
+  const { mutate, isLoading, isSuccess, isError } = useMutation(addRSVP);
+  const { register, handleSubmit, control } = useForm({
+    resolver: yupResolver(RsvpValidation),
+    mode: "onSubmit",
+    reValidateMode: "onBlur",
+  });
 
-const RSVP = (props: Props) => {
-  const { register, handleSubmit, watch, control } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    mutate(data);
+  };
 
   const rsvp = useController({ name: "rsvp", control, defaultValue: "" });
+
+  const nameLastName = useController({
+    name: "name-lastName",
+    control,
+    defaultValue: "",
+  });
+  const groupType = useController({
+    name: "group-type",
+    control,
+    defaultValue: "",
+  });
   const arrivingDate = useController({
     name: "arriving-date",
     control,
@@ -40,20 +67,35 @@ const RSVP = (props: Props) => {
     defaultValue: "",
   });
   const hasTickets = useController({
-    name: "has-tickes",
+    name: "has-tickets",
     control,
-    defaultValue: "no",
+    defaultValue: false,
   });
   const hasHotel = useController({
     name: "has-hotel",
     control,
-    defaultValue: "no",
+    defaultValue: false,
+  });
+  const hotelName = useController({
+    name: "hotel-name",
+    control,
+    defaultValue: "",
   });
 
-  const groupSize = watch("group-size", 1);
+  const groupSize = useWatch({ control, name: "group-size", defaultValue: 1 });
 
   return (
     <Section>
+      {rsvp.field.value === "yes" && (
+        <Confetti
+          width={width}
+          height={height * 2}
+          numberOfPieces={1000}
+          tweenDuration={2000}
+          recycle={false}
+          initialVelocityY={20}
+        />
+      )}
       <Section.Title>
         <TitleWithIcon title="RSVP">
           <Calendar />
@@ -72,7 +114,10 @@ const RSVP = (props: Props) => {
                 id="name-lastName"
                 variant="standard"
                 fullWidth
-                {...register("name-lastName")}
+                value={nameLastName.field.value}
+                onChange={nameLastName.field.onChange}
+                error={nameLastName.fieldState.invalid}
+                helperText={nameLastName.fieldState.error?.message}
               />
             </Grid>
             <Grid item xs={12} mt={2}>
@@ -92,7 +137,7 @@ const RSVP = (props: Props) => {
             </Grid>
             <Collapse in={groupSize > 1}>
               <Grid item xs={12} my={2}>
-                <FormControl fullWidth>
+                <FormControl fullWidth error={groupType.fieldState.invalid}>
                   <InputLabel id="group-type-label">
                     Este es un grupo ...
                   </InputLabel>
@@ -100,8 +145,10 @@ const RSVP = (props: Props) => {
                     labelId="group-type-label"
                     id="group-type"
                     label="Este es un grupo ..."
-                    {...register("group-type")}
+                    value={groupType.field.value}
+                    onChange={groupType.field.onChange}
                   >
+                    <MenuItem value={undefined}> </MenuItem>
                     <MenuItem value="family">familiar</MenuItem>
                     <MenuItem value="friends">de amig@s</MenuItem>
                     <MenuItem value="couple">de pareja</MenuItem>
@@ -113,6 +160,9 @@ const RSVP = (props: Props) => {
                       de compañeros de trabajo y amigos
                     </MenuItem>
                   </Select>
+                  <FormHelperText>
+                    {groupType.fieldState.error?.message}
+                  </FormHelperText>
                 </FormControl>
               </Grid>
             </Collapse>
@@ -137,6 +187,9 @@ const RSVP = (props: Props) => {
                   />
                   <FormControlLabel value="no" control={<Radio />} label="No" />
                 </RadioGroup>
+                <FormHelperText>
+                  {rsvp.fieldState.error?.message}
+                </FormHelperText>
               </FormControl>
             </Grid>
             <Collapse in={rsvp.field.value === "yes"}>
@@ -150,6 +203,7 @@ const RSVP = (props: Props) => {
                       sx={{ marginBottom: 4, width: "100%" }}
                       {...params}
                       error={arrivingDate.fieldState.invalid}
+                      helperText={arrivingDate.fieldState.error?.message}
                     />
                   )}
                 />
@@ -162,6 +216,7 @@ const RSVP = (props: Props) => {
                       {...params}
                       fullWidth
                       error={leavingDate.fieldState.invalid}
+                      helperText={leavingDate.fieldState.error?.message}
                     />
                   )}
                 />
@@ -181,12 +236,12 @@ const RSVP = (props: Props) => {
                     onChange={hasTickets.field.onChange}
                   >
                     <FormControlLabel
-                      value="yes"
+                      value={true}
                       control={<Radio />}
                       label="Si"
                     />
                     <FormControlLabel
-                      value="no"
+                      value={false}
                       control={<Radio />}
                       label="No"
                     />
@@ -208,36 +263,49 @@ const RSVP = (props: Props) => {
                     onChange={hasHotel.field.onChange}
                   >
                     <FormControlLabel
-                      value="yes"
+                      value={true}
                       control={<Radio />}
                       label="Si"
                     />
                     <FormControlLabel
-                      value="no"
+                      value={false}
                       control={<Radio />}
                       label="No"
                     />
                   </RadioGroup>
                 </FormControl>
               </Grid>
-              <Collapse in={hasHotel.field.value === "yes"}>
+              <Collapse in={hasHotel.field.value === "true"}>
                 <Grid item xs={12}>
                   <TextField
                     label="¿Donde?"
                     id="hotel-name"
                     fullWidth
-                    {...register("hotel-name")}
+                    value={hotelName.field.value}
+                    onChange={hotelName.field.onChange}
+                    error={hotelName.fieldState.invalid}
+                    helperText={hotelName.fieldState.error?.message}
                   />
                 </Grid>
               </Collapse>
             </Collapse>
             <Grid item xs={12}>
               <Button type="submit" size="large">
-                Enviar
+                {isLoading ? <CircularProgress size="1rem" /> : "Enviar"}
               </Button>
             </Grid>
           </form>
         </Grid>
+        <Collapse in={isSuccess}>
+          <Alert severity="success" sx={{ marginY: 2 }}>
+            Información guardada exitosamente
+          </Alert>
+        </Collapse>
+        <Collapse in={isError}>
+          <Alert severity="error" sx={{ marginY: 2 }}>
+            Información guardada exitosamente Hubo un error, intenta de nuevo
+          </Alert>
+        </Collapse>
       </Section.Content>
     </Section>
   );
