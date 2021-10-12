@@ -48,7 +48,7 @@ const RSVP = () => {
           </TitleWithIcon>
         </Section.Title>
         <Section.Content>
-          <Grid container px={2}>
+          <Grid container px={2} pt={2}>
             <Typography fontWeight={700} variant="body1">
               Estamos calculando cuanto vino y cerveza vamos a tomar, es por eso
               que necesitamos que contestes las siguientes preguntas:{" "}

@@ -27,8 +27,6 @@ const Form = ({ loading }: Props) => {
   const { control, formState } = useFormContext();
   const rsvp = useController({ name: "rsvp", control, defaultValue: "" });
 
-  console.log(formState.errors);
-
   const nameLastName = useController({
     name: "name-lastName",
     control,
@@ -74,6 +72,7 @@ const Form = ({ loading }: Props) => {
     control,
     defaultValue: "",
   });
+
   return (
     <div>
       <Grid item xs={12} my={2}>
@@ -231,8 +230,8 @@ const Form = ({ loading }: Props) => {
           </Grid>
         </Collapse>
       </Collapse>
-      <Collapse in={formState.isValid}>
-        <Grid item xs={12}>
+      <Collapse in={formState.isDirty}>
+        <Grid item xs={12} mt={2}>
           <TextField
             label="Código secreto"
             id="code"
