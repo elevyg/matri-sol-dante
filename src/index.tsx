@@ -9,7 +9,6 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getFirestore } from "firebase/firestore";
 import { QueryClient, QueryClientProvider } from "react-query";
 import esLocale from "date-fns/locale/es";
 
@@ -29,7 +28,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 getAnalytics(app);
-export const db = getFirestore();
 
 const queryClient = new QueryClient();
 
