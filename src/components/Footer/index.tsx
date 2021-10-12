@@ -8,28 +8,8 @@ const Footer = () => {
   const classes = useStyles();
   return (
     <footer className={classes.footerContainer}>
-      <div style={{}}>
+      <div>
         <Typography>{` Todos los derechos reservados ${year}`}</Typography>
-        <div>
-          <Typography>
-            Iconos hechos por{" "}
-            <a
-              href="https://www.flaticon.com/authors/good-ware"
-              title="Good Ware"
-              className={classes.a}
-            >
-              Good Ware
-            </a>{" "}
-            de{" "}
-            <a
-              href="https://www.flaticon.com/"
-              title="Flaticon"
-              className={classes.a}
-            >
-              www.flaticon.com
-            </a>
-          </Typography>
-        </div>
       </div>
       <div className={classes.flamingoContainer}>
         <SvgIcon sx={{ fontSize: 80 }}>
@@ -54,6 +34,8 @@ const useStyles = makeStyles<Theme>((theme) => ({
     flex: 1,
     justifyContent: "space-around",
     alignItems: "center",
+    flexDirection: "column",
+    [theme.breakpoints.up("md")]: { flexDirection: "row" },
   },
   a: { color: "#Bdbdbdbd" },
   flamingoContainer: {
