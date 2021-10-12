@@ -41,4 +41,5 @@ export const RsvpValidation = yup.object({
     is: (rsvp, hasHotel) => rsvp === "yes" && hasHotel,
     then: yup.string().required(requiredText),
   }),
+  code: yup.string(),
 });
