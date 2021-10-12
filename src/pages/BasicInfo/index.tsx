@@ -7,11 +7,13 @@ import WhereToStay from "../../components/WhereToStay";
 import AboutTheWedding from "../../components/AboutTheWedding";
 import AboutChileChico from "../../components/AboutChileChico";
 import Footer from "../../components/Footer";
+import Hero from "../../components/Hero";
 
 const BasicInfo = () => {
   const classes = useStyles();
   return (
     <div>
+      <Hero />
       <HowToGetThere />
       <div className={classes.imageContainer}>
         <img
