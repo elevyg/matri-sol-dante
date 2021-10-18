@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Home, BasicInfo, GuestList } from "../pages";
+import { Home, BasicInfo, Confirmations } from "../pages";
 
 const AppRouter = () => (
   <Router>
@@ -12,7 +12,7 @@ const AppRouter = () => (
         <BasicInfo />
       </Route>
       <Route path="/lista-invitados">
-        <GuestList />
+        <Confirmations />
       </Route>
     </Switch>
   </Router>

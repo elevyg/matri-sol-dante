@@ -13,19 +13,20 @@ import { addRSVP } from "../../actions/rsvp";
 import { RsvpValidation } from "../../utils/rsvpValidation";
 import Form from "./Form";
 import Alerts from "./Alerts";
+import { Rsvp } from "../../models/Forms";
 
 const RSVP = () => {
   const { width, height } = useWindowSize();
   const { mutate, isLoading, isSuccess, isError } = useMutation(addRSVP);
-  const methods = useForm({
+  const methods = useForm<Rsvp>({
     resolver: yupResolver(RsvpValidation),
     mode: "all",
     reValidateMode: "onBlur",
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = methods.handleSubmit((data) => {
     mutate(data);
-  };
+  });
 
   const rsvp = useWatch({ name: "rsvp", control: methods.control });
 
@@ -53,10 +54,7 @@ const RSVP = () => {
               Estamos calculando cuanto vino y cerveza vamos a tomar, es por eso
               que necesitamos que contestes las siguientes preguntas:{" "}
             </Typography>
-            <form
-              onSubmit={methods.handleSubmit(onSubmit)}
-              style={{ width: "100%" }}
-            >
+            <form onSubmit={onSubmit} style={{ width: "100%" }}>
               <Form loading={isLoading} />
             </form>
           </Grid>

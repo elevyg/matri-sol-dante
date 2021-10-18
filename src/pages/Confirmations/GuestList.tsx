@@ -1,44 +1,33 @@
 import React from "react";
-import { Container, Typography, Box } from "@mui/material";
+import { Container, Box } from "@mui/material";
 import {
   DataGrid,
   GridColDef,
   GridColumns,
-  GridToolbarContainer,
-  GridToolbarExport,
   GridValueFormatterParams,
+  GridToolbar,
 } from "@mui/x-data-grid";
-import { useQuery } from "react-query";
 
-import { readRSVP } from "../../actions/rsvp";
-
-function CustomToolbar() {
-  return (
-    <GridToolbarContainer>
-      <GridToolbarExport />
-    </GridToolbarContainer>
-  );
+interface Props {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: any[];
+  isLoading: boolean;
 }
 
-const Index: React.FC = () => {
-  const { data, isLoading } = useQuery("guests", readRSVP);
-
-  return (
-    <Container maxWidth="xl" sx={{ height: "100vh", maxHeight: "100vh" }}>
-      <Typography variant="h3">Lista de invitados</Typography>
-      <Box height="90%">
-        <DataGrid
-          columns={columns}
-          rows={data || []}
-          loading={isLoading}
-          components={{
-            Toolbar: CustomToolbar,
-          }}
-        />
-      </Box>
-    </Container>
-  );
-};
+const Index: React.FC<Props> = ({ data, isLoading }) => (
+  <Container maxWidth="xl" sx={{ height: "100vh", maxHeight: "100vh" }}>
+    <Box height="90%">
+      <DataGrid
+        columns={columns}
+        rows={data || []}
+        loading={isLoading}
+        components={{
+          Toolbar: GridToolbar,
+        }}
+      />
+    </Box>
+  </Container>
+);
 
 export default Index;
 
@@ -49,7 +38,13 @@ const columnsConfig: Partial<GridColDef> = {
 };
 
 const columns: GridColumns = [
-  { field: "id", headerName: "ID", width: 90 },
+  {
+    field: "id",
+    headerName: "ID",
+    width: 150,
+    hide: true,
+    ...columnsConfig,
+  },
   {
     field: "name-lastName",
     headerName: "Nombre y Apellido",
