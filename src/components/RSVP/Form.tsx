@@ -118,7 +118,6 @@ const Form = ({ loading }: Props) => {
             onChange={groupType.field.onChange}
           >
             <MenuItem value={undefined}> </MenuItem>
-            <MenuItem value="single">de 1 persona</MenuItem>
             <MenuItem value="chile-chico">de Chile Chico</MenuItem>
             <MenuItem value="family">familiar</MenuItem>
             <MenuItem value="friends">de amig@s</MenuItem>

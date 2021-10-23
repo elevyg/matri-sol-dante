@@ -11,8 +11,8 @@ export const RsvpValidation = yup.object({
     is: "yes",
     then: yup.date().required(requiredText).typeError(requiredText),
   }),
-  "leaving-date": yup.mixed().when("rsvp", {
-    is: "yes",
+  "leaving-date": yup.mixed().when(["rsvp", "group-type"], {
+    is: (rsvp, groupType) => rsvp === "yes" && groupType !== "chile-chico",
     then: yup
       .date()
       .required(requiredText)
@@ -23,16 +23,17 @@ export const RsvpValidation = yup.object({
       ),
   }),
 
-  "has-tickets": yup.boolean().when("rsvp", {
-    is: "yes",
+  "has-tickets": yup.boolean().when(["rsvp", "group-type"], {
+    is: (rsvp, groupType) => rsvp === "yes" && groupType !== "chile-chico",
     then: yup.boolean().required(requiredText),
   }),
-  "has-hotel": yup.boolean().when("rsvp", {
-    is: "yes",
+  "has-hotel": yup.boolean().when(["rsvp", "group-type"], {
+    is: (rsvp, groupType) => rsvp === "yes" && groupType !== "chile-chico",
     then: yup.boolean().required(requiredText),
   }),
-  "hotel-name": yup.string().when(["rsvp", "has-hotel"], {
-    is: (rsvp, hasHotel) => rsvp === "yes" && hasHotel,
+  "hotel-name": yup.string().when(["rsvp", "has-hotel", "group-type"], {
+    is: (rsvp, hasHotel, groupType) =>
+      rsvp === "yes" && hasHotel && groupType !== "chile-chico",
     then: yup.string().required(requiredText),
   }),
   code: yup.string(),
