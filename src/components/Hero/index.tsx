@@ -3,10 +3,12 @@ import { Theme, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import NavigationBar from "./NavigationBar";
 
-interface Props {}
+interface Props {
+  backgroundImage: string;
+}
 
-const Hero = (props: Props) => {
-  const classes = useStyles();
+const Hero = ({ backgroundImage }: Props) => {
+  const classes = useStyles({ backgroundImage });
   return (
     <div className={classes.container}>
       <div className={classes.titleContainer}>
@@ -21,9 +23,9 @@ const Hero = (props: Props) => {
 
 export default Hero;
 
-const useStyles = makeStyles<Theme>((theme) => ({
+const useStyles = makeStyles<Theme, { backgroundImage: string }>((theme) => ({
   container: {
-    backgroundImage: `url("https://lacamiyeyalsecasan.s3.us-west-2.amazonaws.com/cami-eyal-lake.jpeg")`,
+    backgroundImage: (props) => `url("${props.backgroundImage}")`,
     width: "100vw",
     height: "60vh",
     backgroundSize: "cover",

@@ -9,7 +9,10 @@ interface Props {
 }
 
 const Section = (props: Props) => (
-  <Container sx={{ marginTop: 4 }} {...props.ContainerProps}>
+  <Container
+    sx={{ marginTop: 4, ...props?.ContainerProps?.sx }}
+    {...props.ContainerProps}
+  >
     <Grid container {...props.GridProps}>
       {props.children}
     </Grid>
@@ -34,7 +37,14 @@ const Title = (props: TitleProps) => (
 type ContentProps = React.ComponentProps<typeof Grid>;
 
 const Content = (props: ContentProps) => (
-  <Grid item xs={12} md={6} justifyContent="center" alignItems="center">
+  <Grid
+    item
+    xs={12}
+    md={6}
+    justifyContent="center"
+    alignItems="center"
+    {...props}
+  >
     {props.children}
   </Grid>
 );
