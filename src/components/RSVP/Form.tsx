@@ -107,35 +107,33 @@ const Form = ({ loading }: Props) => {
           onChange={groupSize.field.onChange}
         />
       </Grid>
-      <Collapse in={groupSize.field.value > 1}>
-        <Grid item xs={12} my={2}>
-          <FormControl fullWidth error={groupType.fieldState.invalid}>
-            <InputLabel id="group-type-label">Este es un grupo ...</InputLabel>
-            <Select
-              labelId="group-type-label"
-              id="group-type"
-              label="Este es un grupo ..."
-              value={groupType.field.value}
-              onChange={groupType.field.onChange}
-            >
-              <MenuItem value={undefined}> </MenuItem>
-              <MenuItem value="family">familiar</MenuItem>
-              <MenuItem value="friends">de amig@s</MenuItem>
-              <MenuItem value="couple">de pareja</MenuItem>
-              <MenuItem value="trisome">de trio</MenuItem>
-              <MenuItem value="coworkers">
-                de compañeros de trabajo pero no amigos
-              </MenuItem>
-              <MenuItem value="coworkers">
-                de compañeros de trabajo y amigos
-              </MenuItem>
-            </Select>
-            <FormHelperText>
-              {groupType.fieldState.error?.message}
-            </FormHelperText>
-          </FormControl>
-        </Grid>
-      </Collapse>
+      <Grid item xs={12} my={2}>
+        <FormControl fullWidth error={groupType.fieldState.invalid}>
+          <InputLabel id="group-type-label">Este es un grupo ...</InputLabel>
+          <Select
+            labelId="group-type-label"
+            id="group-type"
+            label="Este es un grupo ..."
+            value={groupType.field.value}
+            onChange={groupType.field.onChange}
+          >
+            <MenuItem value={undefined}> </MenuItem>
+            <MenuItem value="single">de 1 persona</MenuItem>
+            <MenuItem value="chile-chico">de Chile Chico</MenuItem>
+            <MenuItem value="family">familiar</MenuItem>
+            <MenuItem value="friends">de amig@s</MenuItem>
+            <MenuItem value="couple">de pareja</MenuItem>
+            <MenuItem value="trisome">de trio</MenuItem>
+            <MenuItem value="coworkers">
+              de compañeros de trabajo pero no amigos
+            </MenuItem>
+            <MenuItem value="coworkers">
+              de compañeros de trabajo y amigos
+            </MenuItem>
+          </Select>
+          <FormHelperText>{groupType.fieldState.error?.message}</FormHelperText>
+        </FormControl>
+      </Grid>
       <Grid item xs={12} my={2}>
         <FormControl component="fieldset" error={rsvp.fieldState.invalid}>
           <FormLabel component="legend">¿Vienes al matrimonio?</FormLabel>
@@ -156,7 +154,11 @@ const Form = ({ loading }: Props) => {
           <FormHelperText>{rsvp.fieldState.error?.message}</FormHelperText>
         </FormControl>
       </Grid>
-      <Collapse in={rsvp.field.value === "yes"}>
+      <Collapse
+        in={
+          rsvp.field.value === "yes" && groupType.field.value !== "chile-chico"
+        }
+      >
         <Grid item xs={12} my={2}>
           <DatePicker
             label="Llegada"

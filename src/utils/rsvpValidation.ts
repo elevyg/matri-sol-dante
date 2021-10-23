@@ -5,13 +5,7 @@ const requiredText = "Obligatorio";
 export const RsvpValidation = yup.object({
   "name-lastName": yup.string().required(requiredText),
   "group-size": yup.number().required(),
-  "group-type": yup
-    .string()
-    .nullable()
-    .when("group-size", {
-      is: (val) => val > 1,
-      then: yup.string().required(requiredText),
-    }),
+  "group-type": yup.string().required(requiredText),
   rsvp: yup.string().required(requiredText),
   "arriving-date": yup.mixed().when("rsvp", {
     is: "yes",

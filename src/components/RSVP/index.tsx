@@ -37,10 +37,11 @@ const RSVP = () => {
           <Confetti
             width={width}
             height={height * 2}
-            numberOfPieces={1000}
+            numberOfPieces={500}
             tweenDuration={2000}
             recycle={false}
-            initialVelocityY={20}
+            initialVelocityY={40}
+            confettiSource={{ x: 0, y: height, w: width, h: 0 }}
           />
         )}
         <Section.Title>
