@@ -11,7 +11,12 @@ import { makeStyles } from "@mui/styles";
 import { Link } from "react-router-dom";
 import { ReactComponent as Bar } from "../../assets/icons/bar.svg";
 
-const NavigationBar = () => {
+interface Props {
+  // eslint-disable-next-line react/require-default-props
+  color?: string;
+}
+
+const NavigationBar = ({ color = "#fff" }: Props) => {
   const [openMenu, setOpenMenu] = useState(false);
   const classes = useStyles();
   const isDesktop = useMediaQuery<Theme>((theme) => theme.breakpoints.up("md"));
@@ -45,7 +50,7 @@ const NavigationBar = () => {
           viewBox="0 0 128 128"
           component={Bar}
           className={classes.bar}
-          sx={{ fontSize: 60 }}
+          sx={{ fontSize: 60, color }}
         />
       </IconButton>
       <Dialog
@@ -77,7 +82,7 @@ const useStyles = makeStyles<Theme>((theme) => ({
     top: 0,
     right: 0,
   },
-  bar: { color: "#fff", fontSize: 100, transform: "scale(-1,1)" },
+  bar: { fontSize: 100, transform: "scale(-1,1)" },
   desktopContainer: {
     position: "absolute",
     top: 0,

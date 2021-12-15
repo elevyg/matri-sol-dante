@@ -2,7 +2,6 @@ import React from "react";
 
 import HowToGetThere from "../../components/HowToGetThere";
 import WhereToStay from "../../components/WhereToStay";
-import AboutTheWedding from "../../components/AboutTheWedding";
 import AboutChileChico from "../../components/AboutChileChico";
 import Footer from "../../components/Footer";
 import Hero from "../../components/Hero";
@@ -23,7 +22,6 @@ const BasicInfo = () => (
       alt="apidame"
       mdRotation="left"
     />
-    <AboutTheWedding />
     <AboutChileChico />
     <Footer />
   </div>

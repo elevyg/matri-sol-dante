@@ -2,18 +2,16 @@ import React, { useState } from "react";
 import {
   ButtonBase,
   Container,
-  Dialog,
   Grid,
-  IconButton,
   Paper,
   Theme,
   Typography,
   useMediaQuery,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import CloseIcon from "@mui/icons-material/Close";
 
 import InvitationText from "./InvitationText";
+import Dialog from "../atoms/Dialog";
 
 function Invitation() {
   const classes = useStyles();
@@ -63,17 +61,7 @@ function Invitation() {
                 </Typography>
               </ButtonBase>
               <Dialog open={readMore} onClose={() => setReadMore(false)}>
-                <div className={classes.dialog}>
-                  <IconButton
-                    aria-label="close"
-                    classes={{ root: classes.closeButton }}
-                    onClick={() => setReadMore(false)}
-                    sx={{ position: "absolute" }}
-                  >
-                    <CloseIcon />
-                  </IconButton>
-                  <InvitationText />
-                </div>
+                <InvitationText />
               </Dialog>
             </Grid>
           )}
@@ -121,17 +109,7 @@ const useStyles = makeStyles<Theme>((theme) => ({
       maxHeight: "90vh",
     },
   },
-  dialog: {
-    backgroundColor: "#fdfbe2",
-    padding: theme.spacing(3),
-  },
-  closeButton: {
-    position: "absolute",
-    top: theme.spacing(1),
-    right: theme.spacing(1),
-    zIndex: 10,
-    margin: theme.spacing(2, 2, 0, 0),
-  },
+  dialog: { backgroundColor: "#fdfbe2" },
   readMoreButton: {
     textDecoration: "underline",
     textAlign: "center",
