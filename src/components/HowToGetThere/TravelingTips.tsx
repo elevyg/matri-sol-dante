@@ -1,74 +1,56 @@
 import React from "react";
-import { Link, Theme } from "@mui/material";
-import { makeStyles } from "@mui/styles";
+import { Box, Link } from "@mui/material";
 
 import { ReactComponent as AirplaneIcon } from "../../assets/icons/airplane.svg";
 import { ReactComponent as BusIcon } from "../../assets/icons/bus.svg";
 import { ReactComponent as ShipIcon } from "../../assets/icons/ship.svg";
-import { ReactComponent as SmallPlaneIcon } from "../../assets/icons/small-plane.svg";
+import vehicle from "../../assets/icons/vehicle.png";
 import { ListWithIcons } from "../atoms/ListWithIcons";
 
-const TravelingTips = () => {
-  const classes = useStyles();
-  return (
-    <ListWithIcons>
-      <ListWithIcons.Item>
-        <ListWithIcons.Icon>
-          <AirplaneIcon />
-        </ListWithIcons.Icon>
+const TravelingTips = () => (
+  <ListWithIcons>
+    <ListWithIcons.Item>
+      <ListWithIcons.Icon>
+        <AirplaneIcon />
+      </ListWithIcons.Icon>
 
-        <ListWithIcons.Text>
-          Te recomendamos elegir un vuelo que salga antes del medio día (12pm)
-          de Santiago a Balmaceda.
-        </ListWithIcons.Text>
-      </ListWithIcons.Item>
-      <ListWithIcons.Item>
-        <ListWithIcons.Icon sx={{ transform: "scale(-1,1)" }}>
-          <BusIcon />
-        </ListWithIcons.Icon>
+      <ListWithIcons.Text>
+        Te recomendamos elegir un vuelo que llegue antes de las 14.00 hrs a
+        Balmaceda.
+      </ListWithIcons.Text>
+    </ListWithIcons.Item>
+    <ListWithIcons.Item>
+      <ListWithIcons.Icon sx={{ transform: "scale(-1,1)" }}>
+        <BusIcon />
+      </ListWithIcons.Icon>
 
-        <ListWithIcons.Text>
-          Se puede contratar un transfer llamando a Freddy Morales al +569 9506
-          2906.
-        </ListWithIcons.Text>
-      </ListWithIcons.Item>
-      <ListWithIcons.Item>
-        <ListWithIcons.Icon>
-          <ShipIcon />
-        </ListWithIcons.Icon>
-        <ListWithIcons.Text>
-          Los boletos de barcaza se compran en{" "}
-          <Link href="https://www.barcazas.cl">www.barcazas.cl</Link> buscando
-          las barcazas del Lago General Carrera. Los cupos se abren a comienzo
-          de mes, estamos averiguando si podemos reservarles con más
-          anticipación.
-        </ListWithIcons.Text>
-      </ListWithIcons.Item>
-      <ListWithIcons.Item className={classes.plane}>
-        <ListWithIcons.Icon className={classes.smallPlaneIcon}>
-          <SmallPlaneIcon />
-        </ListWithIcons.Icon>
-        <ListWithIcons.Text>
-          Existe una opción VIP, de avionetas Aerocord que viajan de Coyhaique a
-          Chile Chico. Revisar{" "}
-          <Link href="https://www.facebook.com/aerocord.cl/">acá</Link>.
-        </ListWithIcons.Text>
-      </ListWithIcons.Item>
-    </ListWithIcons>
-  );
-};
+      <ListWithIcons.Text>
+        Se puede contratar un transfer llamando a Freddy Morales al +569 9506
+        2906 (coordinar con anticipación).
+      </ListWithIcons.Text>
+    </ListWithIcons.Item>
+    <ListWithIcons.Item>
+      <ListWithIcons.Icon>
+        <ShipIcon />
+      </ListWithIcons.Icon>
+      <ListWithIcons.Text>
+        Los boletos de barcaza se compran en{" "}
+        <Link href="https://www.somarco.cl">www.somarco.cl</Link> buscando las
+        barcazas del Lago General Carrera. Los cupos se abren a fin del mes
+        anterior.
+      </ListWithIcons.Text>
+    </ListWithIcons.Item>
+    <ListWithIcons.Item>
+      <Box sx={{ marginRight: 2 }}>
+        <img src={vehicle} alt="vehicle" height={50} width={50} />
+      </Box>
+      <ListWithIcons.Text>
+        Si van a arrendar un auto, les recomendamos hacerlo con anticipación ya
+        que estaremos en temporada alta. Los Rent-a-Car más conocidos son:
+        <strong> Varona, Mitta, Hertz, Traeger y Europcar.</strong>
+      </ListWithIcons.Text>
+    </ListWithIcons.Item>
+  </ListWithIcons>
+);
 
 export default TravelingTips;
-
-const useStyles = makeStyles<Theme>((theme) => ({
-  plane: {
-    border: "1.5px dashed",
-    borderRadius: 50,
-    borderColor: theme.palette.grey[400],
-    padding: theme.spacing(1, 2),
-  },
-  smallPlaneIcon: {
-    marginRight: theme.spacing(2),
-    color: theme.palette.grey[400],
-  },
-}));
