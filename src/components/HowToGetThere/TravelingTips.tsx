@@ -77,7 +77,7 @@ const TravelingTips = () => (
             </ul>
           </li>
           <li>
-            Argentina Paso Palavicinia
+            Argentina Paso Palavicini
             <ul>
               <li>Tiempo aproximado: 4:30 horas</li>
               <li>Requiere hacer un trámite aparte en Coyhaique</li>

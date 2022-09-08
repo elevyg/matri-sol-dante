@@ -12,7 +12,7 @@ const WhereToStay = () => {
   return (
     <Section>
       <Section.Title>
-        <TitleWithIcon title="¿Donde alojar?">
+        <TitleWithIcon title="¿Dónde alojar?">
           <HotelIcon />
         </TitleWithIcon>
       </Section.Title>
