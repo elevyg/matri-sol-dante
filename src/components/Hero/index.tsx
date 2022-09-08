@@ -1,68 +1,167 @@
 import React from "react";
-import { Theme, Typography } from "@mui/material";
+import { Theme, Typography, Box } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import NavigationBar from "./NavigationBar";
 
-interface Props {
-  backgroundImage: string;
-  // eslint-disable-next-line react/require-default-props
-  color?: string;
-}
-
-const Hero = ({ backgroundImage, color = "#fff" }: Props) => {
-  const classes = useStyles({ backgroundImage, color });
+const Hero = () => {
+  const classes = useStyles();
   return (
-    <div className={classes.container}>
-      <div className={classes.titleContainer}>
-        <Typography fontWeight={700} className={classes.title} fontSize={30}>
-          La Cami y Eyal se casan
-        </Typography>
-      </div>
-      <NavigationBar color={color} />
-    </div>
+    <Box className={classes.container}>
+      <Title />
+      <Box display="flex" justifyContent="center" alignItems="stretch">
+        <img
+          src="https://i.postimg.cc/HLSJDYcp/cami-eyal-apidame.jpg"
+          alt="main"
+          height="50%"
+          width="100%"
+          style={{ objectFit: "cover" }}
+        />
+      </Box>
+      <SubTitle />
+    </Box>
   );
 };
 
 export default Hero;
 
-const useStyles = makeStyles<Theme, { backgroundImage: string; color: string }>(
-  (theme) => ({
-    container: {
-      backgroundImage: (props) => `url("${props.backgroundImage}")`,
-      width: "100vw",
-      height: "60vh",
-      backgroundSize: "cover",
-      backgroundPosition: "35% 50%",
-      [theme.breakpoints.up("md")]: {
-        height: "80vh",
-        backgroundPosition: "50% 50%",
-      },
+const Title = () => {
+  const classes = useStyles();
+  return (
+    <Box marginBottom={4}>
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        marginTop={3}
+      >
+        <h1 className={classes.mainTitleLeft}>SAVE</h1>
+        <Box
+          border="thick"
+          borderBottom={1}
+          borderTop={1}
+          display="flex"
+          justifyContent="center"
+        >
+          <h1 className={classes.middleTitle}>THE</h1>
+        </Box>
+        <h1 className={classes.mainTitleRight}>WEEK</h1>
+      </Box>
+      <Box>
+        <Typography
+          fontFamily="sans-serif"
+          fontWeight={100}
+          letterSpacing={3}
+          fontSize={20}
+          textAlign="center"
+        >
+          SOL & DANTE
+        </Typography>
+      </Box>
+    </Box>
+  );
+};
+
+const SubTitle = () => {
+  const classes = useStyles();
+  return (
+    <Box
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      marginTop={4}
+    >
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        width="100%"
+      >
+        <Box
+          className={classes.centered}
+          border="thick"
+          borderRight={1}
+          padding={4}
+        >
+          <Typography fontWeight={700} fontSize={30} lineHeight={0}>
+            4
+          </Typography>
+        </Box>
+        <Box padding={4}>
+          <Typography fontWeight={700} fontSize={30} lineHeight={0}>
+            FEBRERO
+          </Typography>
+        </Box>
+        <Box
+          className={classes.centered}
+          border="thick"
+          borderLeft={1}
+          padding={4}
+        >
+          <Typography fontWeight={700} fontSize={30} lineHeight={0}>
+            2023
+          </Typography>
+        </Box>
+      </Box>
+      <Box>
+        <Typography
+          fontFamily="sans-serif"
+          fontWeight={100}
+          letterSpacing={3}
+          fontSize={15}
+          textAlign="center"
+        >
+          CHILE CHICO, AYSÉN
+        </Typography>
+        <Typography
+          fontFamily="sans-serif"
+          fontWeight={100}
+          letterSpacing={3}
+          fontSize={15}
+          textAlign="center"
+        >
+          - PATAGONIA -
+        </Typography>
+      </Box>
+    </Box>
+  );
+};
+
+const useStyles = makeStyles<Theme>((theme) => ({
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  centered: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+  },
+  mainTitleLeft: {
+    fontSize: "3em",
+    fontWeight: 400,
+    lineHeight: 0,
+    marginRight: "1rem",
+    [theme.breakpoints.up("md")]: {
+      fontSize: "4em",
     },
-    titleContainer: {
-      border: (props) => `2px solid ${props.color}`,
-      position: "absolute",
-      top: 0,
-      left: 0,
-      borderRadius: "100%",
-      width: "200px",
-      height: "200px",
-      display: "flex",
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "center",
-      overflow: "hidden",
-      margin: theme.spacing(1, 0, 0, 2),
-      [theme.breakpoints.up("md")]: {
-        fontSize: "1.8rem",
-        margin: theme.spacing(3, 0, 0, 40),
-      },
+  },
+  mainTitleRight: {
+    fontSize: "3em",
+    fontWeight: 400,
+    marginLeft: "1rem",
+    lineHeight: 0,
+    [theme.breakpoints.up("md")]: {
+      fontSize: "4em",
     },
-    title: {
-      color: (props) => props.color,
-      width: "70%",
-      [theme.breakpoints.up("md")]: {
-        fontSize: "2rem",
-      },
+  },
+  middleTitle: {
+    fontSize: "1.3em",
+    fontWeight: 400,
+    lineHeight: 0,
+    [theme.breakpoints.up("md")]: {
+      fontSize: "2em",
     },
-  })
-);
+  },
+}));

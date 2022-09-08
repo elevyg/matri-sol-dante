@@ -21,11 +21,7 @@ const WhereToStay = () => {
           ¡Es importante que comiencen a buscar alojamiento ya!, no hay mucho.
         </Typography>
         <Typography variant="body1" mt={2}>
-          En la hosteria de la Patagonia (donde celebraremos el matri) hay un
-          camping excelente.
-        </Typography>
-        <Typography variant="body1" mt={2}>
-          De los lugares que más nos han recomendado son:
+          Algunos datos:
         </Typography>
         <ul className={classes.list}>
           <li>
@@ -46,11 +42,37 @@ const WhereToStay = () => {
               <li>Tel: +569 4095 7890</li>
             </ul>
           </li>
+          <li>
+            Casona Belga
+            <ul>
+              <li>Tel: +569 3430 1971</li>
+            </ul>
+          </li>
+          <li>
+            Hostería Posada del río (a 2 KM de distancia)
+            <ul>
+              <li>Tel: +569 7985 7512</li>
+            </ul>
+          </li>
+          <li>
+            Camping Hostería de la Patagonia
+            <ul>
+              <li>Tel: +569 8159 2146</li>
+            </ul>
+          </li>
+          <li>
+            Cabañas Frau Schuster
+            <ul>
+              <li>Tel: +569 8222 9315</li>
+            </ul>
+          </li>
+          <li>
+            Cabañas Brisas del Lago
+            <ul>
+              <li>Tel: +569 8462 6289</li>
+            </ul>
+          </li>
         </ul>
-        <Typography variant="body1" mt={2}>
-          Muchas personas particulares arriendan cabañas. Podemos ayudarlos a
-          buscar si nos dan sus fechas y cuantos serán.
-        </Typography>
         <div className={classes.taxi}>
           <SvgIcon sx={{ fontSize: 40 }} className={classes.taxiIcon}>
             <TaxiIcon />
@@ -69,7 +91,7 @@ export default WhereToStay;
 
 const useStyles = makeStyles<Theme>((theme) => ({
   list: {
-    fontFamily: " Neutra Text Alt,Neutra Text Light,Neutra Text TF,Neutra Text",
+    fontFamily: "Vollkorn",
     lineHeight: 1.25,
     fontSize: "1rem",
   },

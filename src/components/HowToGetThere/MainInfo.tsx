@@ -2,7 +2,6 @@ import React from "react";
 import { Typography, Grid, Theme } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
-
 const MainInfo = () => {
   const classes = useStyles();
   return (
@@ -37,7 +36,7 @@ export default MainInfo;
 
 const useStyles = makeStyles<Theme>((theme) => ({
   list: {
-    fontFamily: " Neutra Text Alt,Neutra Text Light,Neutra Text TF,Neutra Text",
+    fontFamily: "Vollkorn",
     lineHeight: 1.25,
     fontSize: "1rem",
   },

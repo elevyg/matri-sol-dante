@@ -5,6 +5,7 @@ import { ReactComponent as AirplaneIcon } from "../../assets/icons/airplane.svg"
 import { ReactComponent as BusIcon } from "../../assets/icons/bus.svg";
 import { ReactComponent as ShipIcon } from "../../assets/icons/ship.svg";
 import vehicle from "../../assets/icons/vehicle.png";
+import border from "../../assets/icons/border.png";
 import { ListWithIcons } from "../atoms/ListWithIcons";
 
 const TravelingTips = () => (
@@ -48,6 +49,42 @@ const TravelingTips = () => (
         Si van a arrendar un auto, les recomendamos hacerlo con anticipación ya
         que estaremos en temporada alta. Los Rent-a-Car más conocidos son:
         <strong> Varona, Mitta, Hertz, Traeger y Europcar.</strong>
+      </ListWithIcons.Text>
+    </ListWithIcons.Item>
+    <ListWithIcons.Item>
+      <Box sx={{ marginRight: 2 }}>
+        <img src={border} alt="border" height={50} width={50} />
+      </Box>
+      <ListWithIcons.Text>
+        Por tierra existen 3 formas más de venir:
+        <ul>
+          <li>
+            Dando la vuelta al lago
+            <ul>
+              <li>Ruta 7 hasta el cruce</li>
+              <li>Ruta 265 hasta Chile Chico</li>
+              <li>Tiempo aproximado: 7 horas</li>
+            </ul>
+          </li>
+          <li>
+            Argentina Paso Huemules
+            <ul>
+              <li>
+                Requiere padrón o permiso del auto, seguro obligatorio del auto,
+                pases de movilidad al día y carnet al día
+              </li>
+              <li>Tiempo aproximado: 4 horas</li>
+            </ul>
+          </li>
+          <li>
+            Argentina Paso Palavicinia
+            <ul>
+              <li>Tiempo aproximado: 4:30 horas</li>
+              <li>Requiere hacer un trámite aparte en Coyhaique</li>
+            </ul>
+          </li>
+        </ul>
+        Pueden encontrar todas las rutas por Google Maps.
       </ListWithIcons.Text>
     </ListWithIcons.Item>
   </ListWithIcons>

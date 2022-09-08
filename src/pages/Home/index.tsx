@@ -1,6 +1,7 @@
 import React from "react";
+import { Box } from "@mui/material";
 
-import Invitation from "../../components/Invitation";
+import HowToGetThere from "../../components/HowToGetThere";
 import Hero from "../../components/Hero";
 
 import Footer from "../../components/Footer";
@@ -8,23 +9,25 @@ import Footer from "../../components/Footer";
 import Gifts from "../../components/Gifts";
 import { Image } from "../../components/atoms";
 import AboutTheWedding from "../../components/AboutTheWedding";
+import WhereToStay from "../../components/WhereToStay";
 
 const Home = () => (
-  <div>
-    <Hero
-      backgroundImage="https://lacamiyeyalsecasan.s3.us-west-2.amazonaws.com/cami+y+eyal+coyhaique+circulo.jpg"
-      color="#243140"
-    />
+  <>
+    <Hero />
     <AboutTheWedding />
     <Image
       src="https://lacamiyeyalsecasan.s3.us-west-2.amazonaws.com/loa-salto.jpg"
       alt="loa"
-      mdRotation="right"
     />
     <Gifts />
-    <Invitation />
+    <Box sx={{ marginBottom: 3, backgroundColor: "#eeeeee", paddingY: 4 }}>
+      <HowToGetThere />
+    </Box>
+    <Box sx={{ marginBottom: 3, paddingY: 4 }}>
+      <WhereToStay />
+    </Box>
     <Footer />
-  </div>
+  </>
 );
 
 export default Home;
