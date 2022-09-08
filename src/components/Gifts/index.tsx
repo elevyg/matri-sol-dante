@@ -27,7 +27,7 @@ const Index = () => {
         </div>
         <div className={classes.code}>
           <ButtonBase
-            href="https://num.cl/eyal"
+            href="https://num.cl/sole"
             classes={{ root: classes.button }}
           >
             <Typography fontSize={30} marginY={2}>
