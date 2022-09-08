@@ -12,12 +12,13 @@ import AboutTheWedding from "../../components/AboutTheWedding";
 import WhereToStay from "../../components/WhereToStay";
 
 const Home = () => (
-  <>
+  <Box display="flex" flex={1} flexDirection="column">
     <Hero />
     <AboutTheWedding />
     <Image
-      src="https://lacamiyeyalsecasan.s3.us-west-2.amazonaws.com/loa-salto.jpg"
-      alt="loa"
+      src="https://i.postimg.cc/jjmDSsKt/hosteria-de-la-patagonia.jpg"
+      alt="hosteria-de-la-patagonia"
+      mdRotation="left"
     />
     <Gifts />
     <Box sx={{ marginBottom: 3, backgroundColor: "#eeeeee", paddingY: 4 }}>
@@ -27,7 +28,7 @@ const Home = () => (
       <WhereToStay />
     </Box>
     <Footer />
-  </>
+  </Box>
 );
 
 export default Home;

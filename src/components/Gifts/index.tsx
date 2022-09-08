@@ -9,7 +9,7 @@ import { ReactComponent as GiftBox } from "../../assets/icons/gift-box.svg";
 const Index = () => {
   const classes = useStyles();
   return (
-    <Section ContainerProps={{ sx: { marginY: 20 } }}>
+    <Section>
       <Section.Title>
         <TitleWithIcon title="Regalos">
           <GiftBox />

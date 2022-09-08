@@ -36,10 +36,13 @@ export default Image;
 const useStyles = makeStyles<Theme, { transform: string }>((theme) => ({
   imageContainer: {
     display: "flex",
+    flex: 1,
+    width: "100%",
     justifyContent: "center",
   },
   image: {
-    width: "100vw",
+    width: "100%",
+    objectFit: "cover",
     marginTop: theme.spacing(3),
     [theme.breakpoints.up("md")]: {
       width: "50vw",

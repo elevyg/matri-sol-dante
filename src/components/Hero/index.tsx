@@ -9,7 +9,7 @@ const Hero = () => {
       <Title />
       <Box display="flex" justifyContent="center" alignItems="stretch">
         <img
-          src="https://i.postimg.cc/HLSJDYcp/cami-eyal-apidame.jpg"
+          src="https://i.postimg.cc/c4pwXMPd/dante-sol-ninos.jpg"
           alt="main"
           height="50%"
           width="100%"
