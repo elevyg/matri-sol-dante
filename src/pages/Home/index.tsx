@@ -10,10 +10,12 @@ import Gifts from "../../components/Gifts";
 import { Image } from "../../components/atoms";
 import AboutTheWedding from "../../components/AboutTheWedding";
 import WhereToStay from "../../components/WhereToStay";
+import RSVP from "../../components/RSVP";
 
 const Home = () => (
   <Box display="flex" flex={1} flexDirection="column">
     <Hero />
+    <RSVP />
     <AboutTheWedding />
     <Image
       src="https://i.postimg.cc/jjmDSsKt/hosteria-de-la-patagonia.jpg"
