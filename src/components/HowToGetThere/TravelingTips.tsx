@@ -36,9 +36,10 @@ const TravelingTips = () => (
       </ListWithIcons.Icon>
       <ListWithIcons.Text>
         Los boletos de barcaza se compran en{" "}
-        <Link href="https://www.somarco.cl">www.somarco.cl</Link> buscando las
-        barcazas del Lago General Carrera. Los cupos se abren a fin del mes
-        anterior.
+        <Link href="https://mi.appbusticket.com/ticketsonline/portal/tickets">
+          este link
+        </Link>{" "}
+        buscando las barcazas del Lago General Carrera.
       </ListWithIcons.Text>
     </ListWithIcons.Item>
     <ListWithIcons.Item>
