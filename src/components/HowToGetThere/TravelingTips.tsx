@@ -36,7 +36,7 @@ const TravelingTips = () => (
       </ListWithIcons.Icon>
       <ListWithIcons.Text>
         Los boletos de barcaza se compran en{" "}
-        <Link href="https://mi.appbusticket.com/ticketsonline/portal/tickets">
+        <Link href="https://mi.appbusticket.com/ticketsonline/inicio/buytickets/55">
           este link
         </Link>{" "}
         buscando las barcazas del Lago General Carrera.
